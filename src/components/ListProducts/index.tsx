@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { Title } from "../Title";
 import { CardProduct } from "./CardProducts";
 import { StyledList, StyledContainerList } from "./style";
 
@@ -15,7 +16,9 @@ export const ListProducts = () => {
             })}
           </StyledList>
         ) : (
-          <h1>Carregando...</h1>
+          <Title colorTitle="Grey5" type="Heading1">
+            Carregando...
+          </Title>
         )}
       </StyledContainerList>
     </>
