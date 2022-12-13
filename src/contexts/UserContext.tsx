@@ -86,7 +86,6 @@ export const UserProvider = ({ children }: iPropsUserProvider) => {
   };
 
   const handleLogout = () => {
-    console.log("teste");
     toast.success("Logout realizado com sucesso!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -120,7 +119,6 @@ export const UserProvider = ({ children }: iPropsUserProvider) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
       setListProducts(response.data);
       navigate("/home");
     } catch (error) {

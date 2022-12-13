@@ -18,11 +18,15 @@ export const StyledContainer = styled.div`
   max-width: 1440px;
   height: 100%;
 
-  padding: 0 100px;
+  padding: 0 15px;
   margin: 0 auto;
 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  @media (min-width: 800px) {
+    padding: 0 100px;
+  }
 `;

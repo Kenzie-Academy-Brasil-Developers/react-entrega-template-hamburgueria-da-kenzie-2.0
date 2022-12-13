@@ -1,6 +1,7 @@
 import { Header } from "../../components/Header";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { ListProducts } from "../../components/ListProducts";
 export const HomePage = () => {
   const { functionValidationPageLogin, listProducts } = useContext(UserContext);
 
@@ -11,7 +12,7 @@ export const HomePage = () => {
   return (
     <>
       <Header />
-      {listProducts.length > 0 ? <h1>neto</h1> : <h1>Carregando...</h1>}
+      <ListProducts />
     </>
   );
 };

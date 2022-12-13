@@ -18,7 +18,7 @@ const functionSelectTitleColor = (props: string) => {
       break;
 
     case "Sucess":
-      return "var(--color-sucess)";
+      return "var(--color-primary)";
       break;
     case "Negative":
       return "var(--color-negative)";
