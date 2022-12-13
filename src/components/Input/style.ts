@@ -31,8 +31,7 @@ export const StyledBoxInput = styled.div`
 
     border-radius: 8px;
     border: 2px solid var(--color-gray-1);
-    padding: 0 15px;
-    box-sizing: content-box;
+    padding-left: 15px;
   }
   input::placeholder {
     color: var(--color-gray-4);
