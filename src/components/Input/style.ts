@@ -1,6 +1,36 @@
 import styled from "styled-components";
 
-export const StyledBoxInput = styled.div`
+interface iProps {
+  borderColor: boolean;
+}
+
+const FunctionBorderColor = (props: boolean) => {
+  switch (props) {
+    case true:
+      return "2px solid var(--color-negative)";
+      break;
+    case false:
+      return "2px solid var(--color-gray-1)";
+      break;
+    default:
+      return "2px solid var(--color-gray-1)";
+  }
+};
+
+const FunctionOutlineColor = (props: boolean) => {
+  switch (props) {
+    case true:
+      return "var(--color-negative)";
+      break;
+    case false:
+      return "var(--color-gray-5)";
+      break;
+    default:
+      return "var(--color-gray-5)";
+  }
+};
+
+export const StyledBoxInput = styled.div<iProps>`
   width: 100%;
   height: fit-content;
 
@@ -8,14 +38,6 @@ export const StyledBoxInput = styled.div`
   flex-direction: column;
 
   position: relative;
-
-  p {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    color: var(--color-negative);
-    margin-top: 5px;
-  }
 
   input {
     width: 100%;
@@ -30,7 +52,9 @@ export const StyledBoxInput = styled.div`
     color: var(--color-gray-5);
 
     border-radius: 8px;
-    border: 2px solid var(--color-gray-1);
+    border: ${({ borderColor }) => {
+      return FunctionBorderColor(borderColor);
+    }};
     padding-left: 15px;
   }
   input::placeholder {
@@ -60,6 +84,9 @@ export const StyledBoxInput = styled.div`
 
   input:focus {
     background-color: var(--color-gray-0);
+    outline-color: ${({ borderColor }) => {
+      return FunctionOutlineColor(borderColor);
+    }};
   }
 
   input:focus + label {

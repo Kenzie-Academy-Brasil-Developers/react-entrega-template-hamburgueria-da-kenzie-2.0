@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface iProps {
-  colorTitle: "Grey5" | "Grey3" | "Grey0" | "Sucess";
+  colorTitle: "Grey5" | "Grey3" | "Grey0" | "Sucess" | "Negative";
 }
 
 const functionSelectTitleColor = (props: string) => {
@@ -19,6 +19,9 @@ const functionSelectTitleColor = (props: string) => {
 
     case "Sucess":
       return "var(--color-sucess)";
+      break;
+    case "Negative":
+      return "var(--color-negative)";
       break;
   }
 };

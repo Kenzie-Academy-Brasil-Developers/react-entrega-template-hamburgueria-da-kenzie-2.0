@@ -39,7 +39,7 @@ export const StyledBoxForm = styled.div`
     flex-direction: column;
     gap: 20px;
 
-    p {
+    p:nth-child(4) {
       text-align: center;
     }
   }

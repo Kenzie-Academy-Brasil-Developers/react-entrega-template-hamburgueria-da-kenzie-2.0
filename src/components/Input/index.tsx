@@ -1,3 +1,5 @@
+import { UseFormRegisterReturn, UseFormSetError } from "react-hook-form";
+import { Title } from "../Title";
 import { StyledBoxInput } from "./style";
 
 interface iInput {
@@ -6,8 +8,8 @@ interface iInput {
   type: "text" | "password";
   disabled?: boolean;
   placeholder?: string;
-  linkForm?: any;
-  error?: string;
+  linkForm?: UseFormRegisterReturn<string>;
+  error?: any;
 }
 
 export const Input = ({
@@ -21,7 +23,7 @@ export const Input = ({
 }: iInput) => {
   return (
     <>
-      <StyledBoxInput>
+      <StyledBoxInput borderColor={error ? true : false}>
         <input
           type={type}
           id={id}
@@ -30,7 +32,10 @@ export const Input = ({
           disabled={disabled}
         />
         <label htmlFor={id}>{labelName}</label>
-        <p>{error}</p>
+
+        <Title type="Caption" colorTitle="Negative">
+          {error}
+        </Title>
       </StyledBoxInput>
     </>
   );

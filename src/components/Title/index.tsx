@@ -11,7 +11,7 @@ interface iTitle {
     | "Body"
     | "Body-600"
     | "Caption";
-  colorTitle: "Grey5" | "Grey3" | "Grey0" | "Sucess";
+  colorTitle: "Grey5" | "Grey3" | "Grey0" | "Sucess" | "Negative";
 }
 
 export const Title = ({ children, type, colorTitle }: iTitle) => {
