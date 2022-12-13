@@ -1,5 +1,6 @@
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
+import { Title } from "../../components/Title";
 
 export const LoginPage = () => {
   return (
@@ -20,6 +21,34 @@ export const LoginPage = () => {
       <Button type="button" variant="Grey1Default" name="teste3" />
       <br></br>
       <Button type="button" variant="Grey2Medium" name="teste3" />
+      <br></br>
+      <Title type="Heading1" colorTitle="Grey3">
+        Testandoangoadnguahnguoa
+      </Title>
+      <br></br>
+      <Title type="Heading2" colorTitle="Grey5">
+        Testandoangoadnguahnguoa
+      </Title>
+      <br></br>
+      <Title type="Heading3" colorTitle="Sucess">
+        Testandoangoadnguahnguoa
+      </Title>
+      <br></br>
+      <Title type="Headline" colorTitle="Grey5">
+        Testandoangoadnguahnguoa
+      </Title>
+      <br></br>
+      <Title type="Body" colorTitle="Sucess">
+        Testandoangoadnguahnguoa
+      </Title>
+      <br></br>
+      <Title type="Body-600" colorTitle="Grey5">
+        Testandoangoadnguahnguoa
+      </Title>
+      <br></br>
+      <Title type="Caption" colorTitle="Grey3">
+        Testandoangoadnguahnguoa
+      </Title>
     </>
   );
 };
