@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useState, useEffect } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { api } from "../services/api";
 import { toast } from "react-toastify";
@@ -14,6 +14,9 @@ interface iUserContext {
   onSubmitRegister: SubmitHandler<iRegisterSubmit>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   loading: boolean;
+  handleLogout: () => void;
+  functionValidationPageLogin: () => void;
+  listProducts: iProducts[];
 }
 
 interface iLoginSubmit {
@@ -32,25 +35,29 @@ interface iDefaultErrorResponse {
   message: string;
 }
 
+interface iProducts {
+  category: string;
+  id: number;
+  img: string;
+  name: string;
+  price: number;
+}
+
 export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: iPropsUserProvider) => {
-  const [loggedUser, setLoggedUser] = useState({} as iRegisterSubmit);
+  const [listProducts, setListProducts] = useState<iProducts[]>([]);
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("@TOKEN");
-
   const onSubmitLogin: SubmitHandler<iLoginSubmit> = async (data) => {
-    console.log(data);
     try {
       setLoading(true);
       const response = await api.post("/login", data);
       toast.success("Login realizado com sucesso!");
       localStorage.setItem("KenzieBurguer@TOKEN", response.data.accessToken);
-      setLoggedUser(response.data.user);
-      console.log(response.data);
+      requestListProducts();
       navigate("/home");
     } catch (error) {
       const currentError = error as AxiosError<iDefaultErrorResponse>;
@@ -68,7 +75,6 @@ export const UserProvider = ({ children }: iPropsUserProvider) => {
       setLoading(true);
       const response = await api.post("/users", data);
       toast.success("Conta criada com sucesso!");
-      console.log(response.data);
       navigate("/login");
     } catch (error) {
       const currentError = error as AxiosError<iDefaultErrorResponse>;
@@ -79,9 +85,84 @@ export const UserProvider = ({ children }: iPropsUserProvider) => {
     }
   };
 
+  const handleLogout = () => {
+    console.log("teste");
+    toast.success("Logout realizado com sucesso!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    localStorage.removeItem("KenzieBurguer@TOKEN");
+    navigate("/login");
+  };
+
+  const validationToken = async () => {
+    const token = localStorage.getItem("KenzieBurguer@TOKEN");
+    if (token) {
+      try {
+        const response = await api.get("/products", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        return true;
+      } catch (error) {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  };
+
+  const requestListProducts = async () => {
+    const token = localStorage.getItem("KenzieBurguer@TOKEN");
+    try {
+      const response = await api.get("/products", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
+      setListProducts(response.data);
+      navigate("/home");
+    } catch (error) {
+      localStorage.removeItem("KenzieBurguer@TOKEN");
+      navigate("/login");
+    }
+  };
+
+  const functionValidation = async () => {
+    const test = await validationToken();
+    if (test) {
+      requestListProducts();
+      navigate("/home");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const functionValidationPageLogin = async () => {
+    const test = await validationToken();
+    if (test) {
+      navigate("/home");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  useEffect(() => {
+    functionValidation();
+  }, []);
+
   return (
     <UserContext.Provider
-      value={{ onSubmitLogin, setLoading, loading, onSubmitRegister }}
+      value={{
+        onSubmitLogin,
+        setLoading,
+        loading,
+        onSubmitRegister,
+        handleLogout,
+        functionValidationPageLogin,
+        listProducts,
+      }}
     >
       {children}
     </UserContext.Provider>

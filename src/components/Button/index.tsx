@@ -4,12 +4,18 @@ import {
   StyledButtonPrimaryMedium,
   StyledButtonGrey1Default,
   StyledButtonGrey2Medium,
+  StyledButtonIconDefault,
 } from "./style";
 
 interface iButtonProps {
   name?: string;
   type: "button" | "submit";
-  variant: "PrimaryDefault" | "PrimaryMedium" | "Grey1Default" | "Grey2Medium";
+  variant:
+    | "PrimaryDefault"
+    | "PrimaryMedium"
+    | "Grey1Default"
+    | "Grey2Medium"
+    | "IconDefault";
   action?: () => void;
   children?: ReactNode;
   disabled?: boolean;
@@ -70,6 +76,18 @@ export const Button = ({
           {name}
           {children}
         </StyledButtonGrey2Medium>
+      );
+      break;
+    case "IconDefault":
+      return (
+        <StyledButtonIconDefault
+          onClick={action}
+          type={type}
+          disabled={disabled}
+        >
+          {name}
+          {children}
+        </StyledButtonIconDefault>
       );
       break;
   }

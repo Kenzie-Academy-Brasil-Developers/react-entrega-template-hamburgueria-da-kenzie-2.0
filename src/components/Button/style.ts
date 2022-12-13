@@ -107,3 +107,21 @@ export const StyledButtonGrey2Medium = styled.button`
     color: var(--color-gray-2);
   }
 `;
+
+export const StyledButtonIconDefault = styled.button`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+
+  border: none;
+
+  color: var(--color-gray-3);
+  background-color: transparent;
+
+  &:hover {
+    color: var(--color-gray-4);
+  }
+`;
