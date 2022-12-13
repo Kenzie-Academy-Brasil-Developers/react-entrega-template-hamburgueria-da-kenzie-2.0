@@ -1,5 +1,6 @@
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
+import { LinkNavigation } from "../../components/LinkNavigation";
 import { Title } from "../../components/Title";
 
 export const LoginPage = () => {
@@ -49,6 +50,14 @@ export const LoginPage = () => {
       <Title type="Caption" colorTitle="Grey3">
         Testandoangoadnguahnguoa
       </Title>
+      <br></br>
+      <LinkNavigation name="Cadastrar" to="/register" variant="Grey1Default" />
+      <br></br>
+      <LinkNavigation
+        name="Voltar para pagina"
+        to="/register"
+        variant="Underline"
+      />
     </>
   );
 };
