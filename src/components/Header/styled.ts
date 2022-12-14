@@ -112,11 +112,11 @@ export const StyledContainer = styled.div<iPropsStyledContainer>`
       div:nth-child(1) {
         position: unset;
         padding: 0;
+        transform: translateY(0);
         form {
           display: flex;
           width: 100%;
           max-width: 365px;
-          transform: translateY(0);
           input {
             max-width: 365px;
           }

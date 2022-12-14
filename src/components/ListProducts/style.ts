@@ -14,7 +14,7 @@ export const StyledList = styled.ul`
 
   @media (min-width: 800px) {
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
   }
 `;
 
@@ -31,7 +31,28 @@ export const StyledContainerList = styled.div`
   align-items: center;
   justify-content: center;
 
+  & > h4 {
+    margin-top: 50px;
+  }
+
   @media (min-width: 800px) {
     padding: 50px 100px;
+  }
+`;
+
+export const StyledBoxResults = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+
+  h2 > span {
+    color: #828282;
+  }
+
+  @media (max-width: 570px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
 `;

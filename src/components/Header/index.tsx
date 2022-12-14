@@ -13,10 +13,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useOutClick } from "../../hooks/useOutClick";
 
 export function Header() {
-  const { handleLogout } = useContext(UserContext);
+  const { handleLogout, submitInputSearch } = useContext(UserContext);
   const { cartListProducts, functionOpenModal } = useContext(CartContext);
 
   const [viewInput, setViewInput] = useState(false);
+  const [inputSearch, setInputsearch] = useState("");
 
   const modalRef = useOutClick(() => {
     if (window.screen.width < 800) {
@@ -24,14 +25,26 @@ export function Header() {
     }
   });
 
+  const resizeWindow = () => {
+    if (window.screen.width >= 800) {
+      setViewInput(true);
+    } else {
+      setViewInput(false);
+    }
+  };
+
+  const submitForm = (e: any) => {
+    submitInputSearch(e, inputSearch);
+    setInputsearch("");
+    setViewInput(false);
+  };
+
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      if (window.screen.width >= 800) {
-        setViewInput(true);
-      } else {
-        setViewInput(false);
-      }
-    });
+    window.addEventListener("resize", resizeWindow);
+
+    return () => {
+      window.removeEventListener("resize", resizeWindow);
+    };
   }, []);
 
   return (
@@ -40,8 +53,19 @@ export function Header() {
         <img src={logo} alt="" />
         <div>
           <div>
-            <form>
-              <input type="text" placeholder="O que você deseja?" />
+            <form
+              onSubmit={(e) => {
+                submitForm(e);
+              }}
+            >
+              <input
+                type="text"
+                placeholder="O que você deseja?"
+                value={inputSearch}
+                onChange={(e) => {
+                  setInputsearch(e.target.value);
+                }}
+              />
               <Button type="submit" variant="IconDefault">
                 <SearchIcon />
               </Button>

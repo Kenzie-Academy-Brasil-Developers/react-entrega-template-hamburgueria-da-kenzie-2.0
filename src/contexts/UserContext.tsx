@@ -17,6 +17,9 @@ interface iUserContext {
   handleLogout: () => void;
   functionValidationPageLogin: () => void;
   listProducts: iProducts[];
+  currentSearch: string;
+  submitInputSearch: (e: any, inputSearch: string) => void;
+  clearSearch: () => void;
 }
 
 interface iLoginSubmit {
@@ -47,6 +50,7 @@ export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: iPropsUserProvider) => {
   const [listProducts, setListProducts] = useState<iProducts[]>([]);
+  const [currentSearch, setCurrentSearch] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -91,6 +95,20 @@ export const UserProvider = ({ children }: iPropsUserProvider) => {
     });
     localStorage.removeItem("KenzieBurguer@TOKEN");
     navigate("/login");
+  };
+
+  const submitInputSearch = (e: any, inputSearch: string) => {
+    e.preventDefault();
+
+    if (inputSearch.trim() === "") {
+      toast.error("Ops! O campo de pesquisa não pode está vazio!");
+    } else {
+      setCurrentSearch(inputSearch.trim());
+    }
+  };
+
+  const clearSearch = () => {
+    setCurrentSearch("");
   };
 
   const validationToken = async () => {
@@ -160,6 +178,9 @@ export const UserProvider = ({ children }: iPropsUserProvider) => {
         handleLogout,
         functionValidationPageLogin,
         listProducts,
+        currentSearch,
+        submitInputSearch,
+        clearSearch,
       }}
     >
       {children}
