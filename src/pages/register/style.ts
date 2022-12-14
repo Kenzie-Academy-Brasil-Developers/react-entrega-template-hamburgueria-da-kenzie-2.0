@@ -38,10 +38,6 @@ export const StyledBoxForm = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-
-    p {
-      text-align: center;
-    }
   }
 `;
 
