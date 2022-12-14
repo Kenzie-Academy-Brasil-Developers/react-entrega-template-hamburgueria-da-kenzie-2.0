@@ -1,6 +1,8 @@
 import { Button } from "../../Button";
 import { Title } from "../../Title";
 import { StyledCard, StyledBoxImg, StyledBoxInfos } from "./style";
+import { useContext } from "react";
+import { CartContext } from "../../../contexts/CartContext";
 
 interface iProducts {
   category: string;
@@ -16,6 +18,9 @@ interface iProps {
 
 export const CardProduct = ({ product }: iProps) => {
   const { id, name, category, price, img } = product;
+
+  const { addProductToCartList } = useContext(CartContext);
+
   return (
     <StyledCard>
       <StyledBoxImg>
@@ -30,12 +35,19 @@ export const CardProduct = ({ product }: iProps) => {
           {category}
         </Title>
         <Title colorTitle="Sucess" type="Body-600">
-          {Number(price).toLocaleString("pt-br", {
+          {price.toLocaleString("pt-br", {
             style: "currency",
             currency: "BRL",
           })}
         </Title>
-        <Button type="button" variant="Grey2Medium" name="Adicionar" />
+        <Button
+          type="button"
+          variant="Grey2Medium"
+          name="Adicionar"
+          action={() => {
+            addProductToCartList(product);
+          }}
+        />
       </StyledBoxInfos>
     </StyledCard>
   );

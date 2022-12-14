@@ -118,7 +118,7 @@ export const StyledButtonIconDefault = styled.button`
 
   border: none;
 
-  color: var(--color-gray-3);
+  /* color: var(--color-gray-3); */
   background-color: transparent;
 
   &:hover {
