@@ -15,11 +15,12 @@ interface iUserContext {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   loading: boolean;
   handleLogout: () => void;
-  functionValidationPageLogin: () => void;
   listProducts: iProducts[];
   currentSearch: string;
   submitInputSearch: (e: any, inputSearch: string) => void;
   clearSearch: () => void;
+  userLoading: boolean;
+  user: boolean;
 }
 
 interface iLoginSubmit {
@@ -52,6 +53,8 @@ export const UserProvider = ({ children }: iPropsUserProvider) => {
   const [listProducts, setListProducts] = useState<iProducts[]>([]);
   const [currentSearch, setCurrentSearch] = useState("");
   const [loading, setLoading] = useState(false);
+  const [userLoading, setUserLoading] = useState(true);
+  const [user, setUser] = useState(false);
 
   const navigate = useNavigate();
 
@@ -62,6 +65,8 @@ export const UserProvider = ({ children }: iPropsUserProvider) => {
       toast.success("Login realizado com sucesso!");
       localStorage.setItem("KenzieBurguer@TOKEN", response.data.accessToken);
       requestListProducts();
+      setUserLoading(false);
+      setUser(true);
       navigate("/home");
     } catch (error) {
       const currentError = error as AxiosError<iDefaultErrorResponse>;
@@ -149,18 +154,11 @@ export const UserProvider = ({ children }: iPropsUserProvider) => {
     const test = await validationToken();
     if (test) {
       requestListProducts();
+      setUserLoading(false);
+      setUser(true);
       navigate("/home");
     } else {
-      navigate("/login");
-    }
-  };
-
-  const functionValidationPageLogin = async () => {
-    const test = await validationToken();
-    if (test) {
-      navigate("/home");
-    } else {
-      navigate("/login");
+      setUserLoading(false);
     }
   };
 
@@ -176,11 +174,12 @@ export const UserProvider = ({ children }: iPropsUserProvider) => {
         loading,
         onSubmitRegister,
         handleLogout,
-        functionValidationPageLogin,
         listProducts,
         currentSearch,
         submitInputSearch,
         clearSearch,
+        userLoading,
+        user,
       }}
     >
       {children}
