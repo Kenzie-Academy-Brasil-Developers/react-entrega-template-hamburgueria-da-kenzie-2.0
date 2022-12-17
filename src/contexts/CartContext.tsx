@@ -13,6 +13,7 @@ interface iCartContext {
   openModal: boolean;
   functionOpenModal: () => void;
   functionCloseModal: () => void;
+  functionClearCartList: () => void;
 }
 
 interface iCartProducts {
@@ -87,6 +88,10 @@ export const CartProvider = ({ children }: iPropsCartProvider) => {
     setOpenModal(false);
   };
 
+  const functionClearCartList = () => {
+    setCartListProducts([]);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -97,6 +102,7 @@ export const CartProvider = ({ children }: iPropsCartProvider) => {
         openModal,
         functionOpenModal,
         functionCloseModal,
+        functionClearCartList,
       }}
     >
       {children}

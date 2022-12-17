@@ -14,7 +14,8 @@ import { useOutClick } from "../../hooks/useOutClick";
 
 export function Header() {
   const { handleLogout, submitInputSearch } = useContext(UserContext);
-  const { cartListProducts, functionOpenModal } = useContext(CartContext);
+  const { cartListProducts, functionOpenModal, functionClearCartList } =
+    useContext(CartContext);
 
   const [viewInput, setViewInput] = useState(false);
   const [inputSearch, setInputsearch] = useState("");
@@ -37,6 +38,11 @@ export function Header() {
     submitInputSearch(e, inputSearch);
     setInputsearch("");
     setViewInput(false);
+  };
+
+  const functionLogout = () => {
+    handleLogout();
+    functionClearCartList();
   };
 
   useEffect(() => {
@@ -89,7 +95,7 @@ export function Header() {
               <ShoppingCartIcon color="disabled" />
             </Badge>
           </Button>
-          <Button type="button" variant="IconDefault" action={handleLogout}>
+          <Button type="button" variant="IconDefault" action={functionLogout}>
             <LogoutIcon color="disabled" />
           </Button>
         </div>
