@@ -14,15 +14,16 @@ export const ModalCart = () => {
     <Styled.StyledContainerModalWrap>
       <Styled.StyledModal>
         <header>
-          <Title colorTitle="Grey0" type="Heading3">
+          <Title colorTitle="Grey5" type="Heading3">
             Carrinho de compras
           </Title>
           <Button
             type="button"
             variant="IconDefault"
             action={functionCloseModal}
+            arialLabel="Fechar"
           >
-            <CloseIcon color="disabled" />
+            <CloseIcon color="action" />
           </Button>
         </header>
 

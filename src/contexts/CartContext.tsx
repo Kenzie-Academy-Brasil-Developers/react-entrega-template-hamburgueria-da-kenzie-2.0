@@ -43,7 +43,6 @@ export const CartProvider = ({ children }: iPropsCartProvider) => {
     } else {
       product.counter = 1;
       arrayTempCopyCartListProduct.push(product);
-      toast.success("Produto adicionado no carrinho com sucesso!");
     }
     setCartListProducts(arrayTempCopyCartListProduct);
   };
@@ -55,7 +54,6 @@ export const CartProvider = ({ children }: iPropsCartProvider) => {
         (item) => item.id !== product.id
       );
       setCartListProducts(filterArray);
-      toast.success("Produto removido do carrinho com sucesso!");
     } else {
       const searchId = arrayTempCopyCartListProduct.find(
         (item) => item.id === product.id
@@ -77,7 +75,6 @@ export const CartProvider = ({ children }: iPropsCartProvider) => {
 
   const clearCartList = () => {
     setCartListProducts([]);
-    toast.success("Todos os produtos foram removidos com sucesso!");
   };
 
   const functionOpenModal = () => {

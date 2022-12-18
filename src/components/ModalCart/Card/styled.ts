@@ -41,17 +41,25 @@ export const StyledCard = styled.li`
 
       div:nth-child(2) {
         height: 40px;
-        width: 125px;
+        width: 120px;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        gap: 0;
         background-color: var(--color-gray-1);
         p {
           text-align: center;
-          width: 35px;
+          width: 40px;
           background-color: white;
           padding: 5px 0px;
+        }
+
+        button {
+          width: 40px;
+          &[aria-label]::after {
+            top: -90%;
+          }
         }
       }
     }

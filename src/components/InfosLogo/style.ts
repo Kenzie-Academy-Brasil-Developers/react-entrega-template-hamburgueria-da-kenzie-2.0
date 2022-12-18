@@ -52,7 +52,7 @@ export const StyledBoxtextInfos = styled.div`
     min-width: 60px;
     min-height: 60px;
     border-radius: 5px;
-    background-color: rgba(39, 174, 96, 0.1);
+    background-color: rgba(59, 201, 219, 0.1);
 
     display: flex;
     align-items: center;

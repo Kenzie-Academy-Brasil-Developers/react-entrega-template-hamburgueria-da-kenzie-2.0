@@ -32,6 +32,7 @@ export const StyledContainer = styled.div<iPropsStyledContainer>`
 
   div {
     display: flex;
+    align-items: center;
     gap: 20px;
 
     button:nth-child(2) {

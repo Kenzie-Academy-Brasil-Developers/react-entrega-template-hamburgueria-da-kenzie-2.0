@@ -15,9 +15,9 @@ export const GlobalStyle = createGlobalStyle`
   }
   
 :root {
-  --color-primary:#27AE60;
-  --color-primary-hover: #93D7AF;
-  --color-primary-disableb: #155e34;
+  --color-primary:#3bc9db;
+  --color-primary-hover: #15aabf;
+  --color-primary-disableb: #0b7285;
   --color-gray-0: #FFFFFF;
   --color-gray-1: #F5F5F5;
   --color-gray-2: #E0E0E0 ;
@@ -34,6 +34,8 @@ export const GlobalStyle = createGlobalStyle`
 body{
   background-color: var(--color-gray-0);;
 }
+
+
 `;
 
 export const StyledContainer = styled.main`

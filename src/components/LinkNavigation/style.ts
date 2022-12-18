@@ -45,6 +45,6 @@ export const StyledLinkUnderline = styled(Link)`
   color: var(--color-gray-3);
 
   &:hover {
-    color: var(--color-gray-4);
+    color: var(--color-primary-disableb);
   }
 `;
