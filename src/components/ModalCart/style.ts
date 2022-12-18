@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const StyledContainerModalWrap = styled.div`
   min-width: 100vw;
@@ -16,12 +17,15 @@ export const StyledContainerModalWrap = styled.div`
   align-items: center;
   justify-content: center;
 `;
-export const StyledModal = styled.div`
+
+export const StyledModal = styled(motion.div)`
   width: 100%;
   max-width: 500px;
   height: fit-content;
 
   border-radius: 0px 0px 5px 5px;
+
+  transition: width 0.55s, height 0.55s;
 
   header {
     width: 100%;
