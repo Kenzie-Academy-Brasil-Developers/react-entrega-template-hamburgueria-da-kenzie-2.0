@@ -26,7 +26,7 @@ export const TotalCart = () => {
 
       <Button
         type="button"
-        variant="Grey1Default"
+        variant="PrimaryDefault"
         name="Remover todos"
         action={clearCartList}
       />

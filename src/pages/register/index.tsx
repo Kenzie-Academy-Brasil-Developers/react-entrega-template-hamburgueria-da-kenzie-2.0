@@ -86,7 +86,7 @@ export const RegisterPage = () => {
               <Button
                 type="submit"
                 name={loading ? "Cadastrando..." : "Cadastrar"}
-                variant="Grey1Default"
+                variant="PrimaryDefault"
                 disabled={loading}
               />
             </form>

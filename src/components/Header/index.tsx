@@ -75,8 +75,12 @@ export function Header() {
                 placeholder="O que você deseja?"
                 {...register("search")}
               />
-              <Button type="submit" variant="IconDefault">
-                <SearchIcon />
+              <Button
+                type="submit"
+                variant="IconDefault"
+                arialLabel="Pesquisar"
+              >
+                <SearchIcon color="action" />
               </Button>
             </form>
           </div>
@@ -93,12 +97,18 @@ export function Header() {
             type="button"
             variant="IconDefault"
             action={functionOpenModal}
+            arialLabel="Carrinho"
           >
-            <Badge color="success" badgeContent={cartListProducts.length}>
+            <Badge color="info" badgeContent={cartListProducts.length}>
               <ShoppingCartIcon color="disabled" />
             </Badge>
           </Button>
-          <Button type="button" variant="IconDefault" action={functionLogout}>
+          <Button
+            type="button"
+            variant="IconDefault"
+            action={functionLogout}
+            arialLabel="Logout"
+          >
             <LogoutIcon color="disabled" />
           </Button>
         </div>

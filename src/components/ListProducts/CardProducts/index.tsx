@@ -42,7 +42,7 @@ export const CardProduct = ({ product }: iProps) => {
         </Title>
         <Button
           type="button"
-          variant="Grey2Medium"
+          variant="PrimaryMedium"
           name="Adicionar"
           action={() => {
             addProductToCartList(product);

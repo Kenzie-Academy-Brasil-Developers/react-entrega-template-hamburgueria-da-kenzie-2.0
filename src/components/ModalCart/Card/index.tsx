@@ -41,8 +41,9 @@ export const Card = ({ product }: iPropsCard) => {
               action={() => {
                 removeProductToCartList(product, false);
               }}
+              arialLabel="Diminuir"
             >
-              <RemoveIcon color="error" />
+              <RemoveIcon color="info" />
             </Button>
             <Title type="Caption" colorTitle="Grey5">
               {counter}
@@ -53,8 +54,9 @@ export const Card = ({ product }: iPropsCard) => {
               action={() => {
                 addProductToCartList(product);
               }}
+              arialLabel="Adicionar"
             >
-              <AddIcon color="error" />
+              <AddIcon color="info" />
             </Button>
           </div>
         </div>
@@ -65,6 +67,7 @@ export const Card = ({ product }: iPropsCard) => {
         action={() => {
           removeProductToCartList(product, true);
         }}
+        arialLabel="Remover"
       >
         <DeleteIcon color="disabled" />
       </Button>

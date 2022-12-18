@@ -10,16 +10,6 @@ export const StyledCard = styled.li`
   &:hover {
     border: 2px solid var(--color-primary);
     border-radius: 5px;
-
-    button {
-      border: 2px solid var(--color-primary);
-      background-color: var(--color-primary);
-      color: var(--color-gray-0);
-    }
-    button:hover {
-      border: 2px solid var(--color-primary-hover);
-      background-color: var(--color-primary-hover);
-    }
   }
 
   @media (max-width: 570px) {

@@ -19,6 +19,7 @@ interface iButtonProps {
   action?: () => void;
   children?: ReactNode;
   disabled?: boolean;
+  arialLabel?: string;
 }
 export const Button = ({
   name,
@@ -26,6 +27,7 @@ export const Button = ({
   variant,
   disabled,
   action,
+  arialLabel,
   children,
 }: iButtonProps) => {
   switch (variant) {
@@ -84,6 +86,7 @@ export const Button = ({
           onClick={action}
           type={type}
           disabled={disabled}
+          aria-label={arialLabel}
         >
           {name}
           {children}

@@ -25,16 +25,18 @@ export const StyledButtonPrimaryDefault = styled.button`
 
   border: 2px solid var(--color-primary);
   background-color: var(--color-primary);
-  color: var(--color-gray-0);
+  color: var(--color-gray-5);
 
   &:hover {
     border: 2px solid var(--color-primary-hover);
     background-color: var(--color-primary-hover);
+    color: var(--color-gray-5);
   }
 
   &:disabled {
     border: 2px solid var(--color-primary-disableb);
     background-color: var(--color-primary-disableb);
+    color: var(--color-gray-0);
   }
 `;
 
@@ -47,16 +49,18 @@ export const StyledButtonPrimaryMedium = styled.button`
 
   border: 2px solid var(--color-primary);
   background-color: var(--color-primary);
-  color: var(--color-gray-0);
+  color: var(--color-gray-5);
 
   &:hover {
     border: 2px solid var(--color-primary-hover);
     background-color: var(--color-primary-hover);
+    color: var(--color-gray-5);
   }
 
   &:disabled {
     border: 2px solid var(--color-primary-disableb);
     background-color: var(--color-primary-disableb);
+    color: var(--color-gray-0);
   }
 `;
 
@@ -116,12 +120,38 @@ export const StyledButtonIconDefault = styled.button`
 
   font-size: 28px;
 
+  height: 40px;
+
   border: none;
 
-  /* color: var(--color-gray-3); */
   background-color: transparent;
 
   &:hover {
     color: var(--color-gray-4);
+  }
+
+  &[aria-label] {
+    position: relative;
+  }
+
+  &[aria-label]::after {
+    content: attr(aria-label);
+    display: none;
+    position: absolute;
+    top: 110%;
+    /* left: 0px; */
+    right: 0px;
+    z-index: 5000;
+    pointer-events: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-gray-0);
+    background-color: var(--color-primary-disableb);
+  }
+
+  &[aria-label]:hover::after {
+    display: block;
   }
 `;
