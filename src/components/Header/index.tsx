@@ -4,7 +4,7 @@ import { Button } from "../Button";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { CartContext } from "../../contexts/CartContext";
-
+import { useForm } from "react-hook-form";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -12,13 +12,16 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import { useOutClick } from "../../hooks/useOutClick";
 
+interface iInputSearchSubmit {
+  search: string;
+}
+
 export function Header() {
   const { handleLogout, submitInputSearch } = useContext(UserContext);
   const { cartListProducts, functionOpenModal, functionClearCartList } =
     useContext(CartContext);
 
   const [viewInput, setViewInput] = useState(false);
-  const [inputSearch, setInputsearch] = useState("");
 
   const modalRef = useOutClick(() => {
     if (window.screen.width < 800) {
@@ -34,9 +37,9 @@ export function Header() {
     }
   };
 
-  const submitForm = (e: any) => {
-    submitInputSearch(e, inputSearch);
-    setInputsearch("");
+  const submitForm = (data: iInputSearchSubmit) => {
+    reset({ search: "" });
+    submitInputSearch(data);
     setViewInput(false);
   };
 
@@ -44,6 +47,13 @@ export function Header() {
     handleLogout();
     functionClearCartList();
   };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<iInputSearchSubmit>({});
 
   useEffect(() => {
     window.addEventListener("resize", resizeWindow);
@@ -59,18 +69,11 @@ export function Header() {
         <img src={logo} alt="" />
         <div>
           <div>
-            <form
-              onSubmit={(e) => {
-                submitForm(e);
-              }}
-            >
+            <form onSubmit={handleSubmit(submitForm)}>
               <input
                 type="text"
                 placeholder="O que você deseja?"
-                value={inputSearch}
-                onChange={(e) => {
-                  setInputsearch(e.target.value);
-                }}
+                {...register("search")}
               />
               <Button type="submit" variant="IconDefault">
                 <SearchIcon />

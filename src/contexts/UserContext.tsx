@@ -17,7 +17,7 @@ interface iUserContext {
   handleLogout: () => void;
   listProducts: iProducts[];
   currentSearch: string;
-  submitInputSearch: (e: any, inputSearch: string) => void;
+  submitInputSearch: (data: iInputSearchSubmit) => void;
   clearSearch: () => void;
   userLoading: boolean;
   user: boolean;
@@ -45,6 +45,10 @@ interface iProducts {
   img: string;
   name: string;
   price: number;
+}
+
+interface iInputSearchSubmit {
+  search: string;
 }
 
 export const UserContext = createContext({} as iUserContext);
@@ -102,13 +106,11 @@ export const UserProvider = ({ children }: iPropsUserProvider) => {
     navigate("/login");
   };
 
-  const submitInputSearch = (e: any, inputSearch: string) => {
-    e.preventDefault();
-
-    if (inputSearch.trim() === "") {
+  const submitInputSearch = (data: iInputSearchSubmit) => {
+    if (data.search.trim() === "") {
       toast.error("Ops! O campo de pesquisa não pode está vazio!");
     } else {
-      setCurrentSearch(inputSearch.trim());
+      setCurrentSearch(data.search.trim());
     }
   };
 
