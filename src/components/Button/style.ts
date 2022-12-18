@@ -13,6 +13,8 @@ justify-content: center;
 font-weight: 600;
 line-height: 19px;
 
+transition: 500ms linear;
+
 `;
 
 export const StyledButtonPrimaryDefault = styled.button`
@@ -125,6 +127,8 @@ export const StyledButtonIconDefault = styled.button`
   border: none;
 
   background-color: transparent;
+
+  transition: 500ms linear;
 
   &:hover {
     color: var(--color-gray-4);

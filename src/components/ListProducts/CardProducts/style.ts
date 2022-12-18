@@ -7,9 +7,12 @@ export const StyledCard = styled.li`
   border: 2px solid var(--color-gray-2);
   border-radius: 5px;
 
+  transition: 500ms linear;
+
   &:hover {
     border: 2px solid var(--color-primary);
     border-radius: 5px;
+    transform: scale(1.1);
   }
 
   @media (max-width: 570px) {

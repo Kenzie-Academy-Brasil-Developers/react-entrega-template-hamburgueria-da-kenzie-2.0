@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledList = styled.ul`
   display: flex;
-
   gap: 20px;
 
   width: 100%;
@@ -14,7 +13,7 @@ export const StyledList = styled.ul`
 
   @media (min-width: 800px) {
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
   }
 `;
 
